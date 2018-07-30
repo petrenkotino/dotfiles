@@ -39,6 +39,7 @@ cask 'now'
 cask 'phpstorm'
 cask 'screenflow'
 cask 'sequel-pro'
+cask 'sip'
 cask 'skype'
 cask 'slack'
 cask 'spectacle'
@@ -69,7 +70,6 @@ cask 'font-fira-code'
 mas '1Password', id: 1333542190
 mas 'Giphy Capture', id: 668208984
 mas 'Logic Pro X', id: 634148309
-mas 'Sip', id: 507257563
 mas 'Spark', id: 1176895641
 mas 'The Unarchiver', id: 425424353
 mas 'Tyme 2', id: 1063996724
