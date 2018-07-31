@@ -27,6 +27,7 @@ brew 'node'
 cask 'alfred'
 cask 'bartender'
 cask 'docker'
+cask 'dropbox'
 cask 'firefox'
 cask 'google-backup-and-sync'
 cask 'google-chrome'
@@ -57,18 +58,18 @@ cask 'quicklook-csv'
 cask 'qlstephen'
 
 # Fonts
+cask 'font-fira-code'
+cask 'font-lora'
+cask 'font-menlo-for-powerline'
+cask 'font-meslo'
+cask 'font-montserrat'
 cask 'font-source-code-pro-for-powerline'
 cask 'font-source-code-pro'
 cask 'font-source-sans-pro'
 cask 'font-source-serif-pro'
-cask 'font-montserrat'
-cask 'font-lora'
-cask 'font-menlo-for-powerline'
-cask 'font-fira-code'
 
 # Install Mac App Store apps
 mas '1Password', id: 1333542190
-mas 'Giphy Capture', id: 668208984
 mas 'Logic Pro X', id: 634148309
 mas 'Spark', id: 1176895641
 mas 'The Unarchiver', id: 425424353
