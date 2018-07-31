@@ -27,6 +27,7 @@ brew 'node'
 cask 'alfred'
 cask 'bartender'
 cask 'docker'
+cask 'dropbox'
 cask 'firefox'
 cask 'google-backup-and-sync'
 cask 'google-chrome'
@@ -69,7 +70,6 @@ cask 'font-source-serif-pro'
 
 # Install Mac App Store apps
 mas '1Password', id: 1333542190
-mas 'Giphy Capture', id: 668208984
 mas 'Logic Pro X', id: 634148309
 mas 'Spark', id: 1176895641
 mas 'The Unarchiver', id: 425424353
