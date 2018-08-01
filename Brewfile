@@ -64,6 +64,7 @@ cask 'font-lora'
 # Install Mac App Store apps
 mas '1Password', id: 1333542190
 mas 'Logic Pro X', id: 634148309
+mas 'Pages', id:409201541
 mas 'Spark', id: 1176895641
 mas 'The Unarchiver', id: 425424353
 mas 'Tyme 2', id: 1063996724
