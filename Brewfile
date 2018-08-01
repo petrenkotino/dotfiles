@@ -60,13 +60,6 @@ cask 'qlstephen'
 # Fonts
 cask 'font-fira-code'
 cask 'font-lora'
-cask 'font-menlo-for-powerline'
-cask 'font-meslo'
-cask 'font-montserrat'
-cask 'font-source-code-pro-for-powerline'
-cask 'font-source-code-pro'
-cask 'font-source-sans-pro'
-cask 'font-source-serif-pro'
 
 # Install Mac App Store apps
 mas '1Password', id: 1333542190
