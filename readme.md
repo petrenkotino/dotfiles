@@ -10,3 +10,7 @@ This is a fork from [Dries Vints](https://github.com/driesvints/dotfiles). Check
     + Insomnia (Export to Dropbox)
 - Did you remember to export important data from your local database?
 - Did you update [mackup](https://github.com/lra/mackup) to the latest version and ran `mackup backup`?
+
+## Still Missing
+
+- Backup Spark Mail Accounts
