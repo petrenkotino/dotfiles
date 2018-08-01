@@ -14,3 +14,5 @@ This is a fork from [Dries Vints](https://github.com/driesvints/dotfiles). Check
 ## Still Missing
 
 - Backup Spark Mail Accounts
+- Activate right mous click
+- Install Virtualbox Error ([more info](https://github.com/Homebrew/homebrew-cask/issues/46435#issuecomment-409237562))
