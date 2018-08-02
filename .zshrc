@@ -54,9 +54,14 @@ ZSH_CUSTOM=$DOTFILES
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git laravel5 composer osx gitfast)
 
-
 # Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
+
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
 
 # You may need to manually set your language environment
 export LC_ALL=en_US.UTF-8
