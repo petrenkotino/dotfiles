@@ -47,6 +47,9 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 # Symlink the Mackup config file to the home directory
 ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 
+# Create directory for screenshots
+mkdir $HOME/Desktop/Screenshots/
+
 # Set macOS preferences
 # We will run this last because this will reload the shell
 source .macos

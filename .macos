@@ -289,6 +289,9 @@ defaults write com.apple.menuextra.clock DateFormat "EEE MMM d  H:mm"
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
+# Save screenshots to dolfer
+defaults write com.apple.screencapture location ~/Desktop/Screenshots
+
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
