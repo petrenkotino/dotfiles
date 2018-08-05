@@ -35,7 +35,7 @@ alias .....="cd ../../../.."
 
 alias home="cd ~/"
 alias goto_dotfiles="cd ~/.dotfiles"
-alias goto_valet="cd ~/Documents/Websites/valet"
+alias goto_sites="cd ~/Sites"
 alias gv="cd ~/Documents/Websites/valet"
 
 #-----------------------------------------------------------------------------------#
