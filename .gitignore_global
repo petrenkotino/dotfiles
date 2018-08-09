@@ -19,6 +19,7 @@
 *.rar
 *.tar
 *.zip
+/.discovery
 
 # Logs and databases #
 ######################

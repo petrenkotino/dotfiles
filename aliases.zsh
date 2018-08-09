@@ -38,6 +38,8 @@ alias goto_dotfiles="cd ~/.dotfiles"
 alias goto_sites="cd ~/Sites"
 alias gv="cd ~/Documents/Websites/valet"
 
+alias subl_dotfiles="subl ~/.dotfiles"
+
 #-----------------------------------------------------------------------------------#
 #	*END* GOTO
 #-----------------------------------------------------------------------------------#
@@ -63,6 +65,7 @@ alias nope="git reset --hard && git clean -df"
 alias gaa='git add --all'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
+alias gac="git add -A && git commit -m"
 #-----------------------------------------------------------------------------------#
 #	*END* GIT
 #-----------------------------------------------------------------------------------#
