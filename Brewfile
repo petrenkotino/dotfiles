@@ -63,6 +63,7 @@ cask 'font-lora'
 
 # Install Mac App Store apps
 mas '1Password', id: 1333542190
+mas 'Keynote', id: 409183694
 mas 'Logic Pro X', id: 634148309
 mas 'Pages', id:409201541
 mas 'Spark', id: 1176895641
