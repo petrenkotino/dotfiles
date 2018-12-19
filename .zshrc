@@ -52,7 +52,7 @@ ZSH_CUSTOM=$DOTFILES
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git laravel5 composer osx gitfast)
+plugins=(git laravel5 composer osx gitfast zsh-autosuggestions)
 
 # Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
@@ -79,3 +79,8 @@ export LANG=en_US.UTF-8
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# added by travis gem
+[ -f /Users/christophrumpel/.travis/travis.sh ] && source /Users/christophrumpel/.travis/travis.sh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

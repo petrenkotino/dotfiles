@@ -17,3 +17,4 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Load custom commands
 export PATH="$DOTFILES/bin:$PATH"
+
