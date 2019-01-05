@@ -76,7 +76,7 @@ alias gac="git add -A && git commit -m"
 #-----------------------------------------------------------------------------------#
 
 alias art='php artisan'
-alias mfs='php artisan migreate:fresh --seed'
+alias mfs='php artisan migrate:fresh --seed'
 alias phpunit='vendor/bin/phpunit'
 
 #-----------------------------------------------------------------------------------#
