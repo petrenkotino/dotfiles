@@ -1,1 +1,0 @@
-/Users/christophrumpel/Dropbox/Backups/SSH Connections/aliases_private.zsh
