@@ -33,7 +33,7 @@ brew 'yarn'
 # Apps
 cask 'alfred'
 cask 'bartender'
-cask 'brave'
+cask 'brave-browser'
 cask 'docker'
 cask 'dropbox'
 cask 'firefox'
