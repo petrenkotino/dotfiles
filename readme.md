@@ -11,8 +11,13 @@ This is a fork from [Dries Vints](https://github.com/driesvints/dotfiles). Check
 - Did you remember to export important data from your local database?
 - Did you update [mackup](https://github.com/lra/mackup) to the latest version and ran `mackup backup`?
 
+## Installation
+
+- See [here](https://github.com/driesvints/dotfiles)
+
 ## Still Missing
 
 - Backup Spark Mail Accounts
 - Activate right mouse click
-- Install Virtualbox Error ([more info](https://github.com/Homebrew/homebrew-cask/issues/46435#issuecomment-409237562))
+- Sleep time missmatch/error
+- Install Virtualbox Error (Needs to be allowed in preferences)
