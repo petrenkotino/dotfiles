@@ -37,6 +37,9 @@ git clone git@github.com:powerline/fonts.git $HOME/Sites/powerline-fonts
 rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
+# Install Pure theme
+npm install --global pure-prompt
+
 # Symlink the Mackup config file to the home directory
 ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 

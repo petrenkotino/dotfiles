@@ -9,6 +9,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="agnoster"
+# No theme selected to make use of Pure theme
 ZSH_THEME=""
 
 # Uncomment the following line to use case-sensitive completion.
@@ -58,6 +59,11 @@ plugins=(git laravel5 composer osx gitfast zsh-autosuggestions)
 # Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
 
+# Activate Pure Theme
+# Make sure to remove this if you use another theme
+autoload -U promptinit; promptinit
+prompt pure
+
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
@@ -85,3 +91,4 @@ export LANG=en_US.UTF-8
 [ -f /Users/christophrumpel/.travis/travis.sh ] && source /Users/christophrumpel/.travis/travis.sh
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+

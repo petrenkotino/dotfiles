@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "homebrew/cask": {
-        "revision": "2e9c1098bfcd9a8c0f46428bdd3f7110c1424898"
+        "revision": "b213288f44fd8b2130a04d248b628160ffd07bee"
       },
       "homebrew/cask-eid": {
         "revision": "248e26a85a5e903fd134954ec82138cfe35eb5ce"
@@ -14,7 +14,7 @@
         "revision": "36be073327d6289819b69e20f35b2eac613684f1"
       },
       "homebrew/bundle": {
-        "revision": "935b1c9e7f96b0a247b0eac9422fd424c9ca601c"
+        "revision": "bb49902ab5bd805a99b138cedf33ae3a5f78bb70"
       }
     },
     "brew": {
