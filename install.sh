@@ -31,6 +31,7 @@ $HOME/.composer/vendor/bin/valet install
 # This is a default directory for macOS user accounts but doesn't comes pre-installed
 mkdir $HOME/Sites
 
+# Load powerline fonts
 git clone git@github.com:powerline/fonts.git $HOME/Sites/powerline-fonts
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
@@ -39,6 +40,10 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
 # Install Pure theme
 npm install --global pure-prompt
+
+# Install ZSH autosuggestion plugin
+git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.dotfiles/plugins/zsh-autosuggestions
+
 
 # Symlink the Mackup config file to the home directory
 ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
