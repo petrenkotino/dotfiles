@@ -62,10 +62,16 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 # Activate Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
 
+# Change Pure Colors
+zmodload zsh/nearcolor
+zstyle :prompt:pure:git:branch color green
+
 # Activate Pure Theme
 # Make sure to remove this if you use another theme
 autoload -U promptinit; promptinit
 prompt pure
+
+
 
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
