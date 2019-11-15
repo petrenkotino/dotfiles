@@ -34,11 +34,10 @@ alias .....="cd ../../../.."
 #-----------------------------------------------------------------------------------#
 
 alias home="cd ~/"
-alias goto_dotfiles="cd ~/.dotfiles"
-alias goto_sites="cd ~/Sites"
-alias gv="cd ~/Documents/Websites/valet"
+alias gotodotfiles="cd ~/.dotfiles"
+alias gotosites="cd ~/Sites"
 
-alias subl_dotfiles="subl ~/.dotfiles"
+alias subldotfiles="subl ~/.dotfiles"
 
 #-----------------------------------------------------------------------------------#
 #	*END* GOTO
