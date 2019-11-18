@@ -44,6 +44,8 @@ npm install --global pure-prompt
 # Install ZSH autosuggestion plugin
 git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.dotfiles/plugins/zsh-autosuggestions
 
+# Install Alfred Google Translate Workflow
+npm install --global alfred-polyglot
 
 # Symlink the Mackup config file to the home directory
 ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
