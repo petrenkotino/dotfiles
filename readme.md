@@ -12,6 +12,7 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
     + Insomnia (Export to Dropbox)
 - Did you remember to export important data from your local database?
 - Did you update [mackup](https://github.com/lra/mackup) to the latest version and ran `mackup backup`?
+- Export Tyme data because it wasn't synced correctly the last time
 
 ## Installation
 
@@ -30,8 +31,11 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 
 ## Still Missing
 
-- Backup Spark Mail Accounts
+- Backup Spark Mail Accounts (Working if you login in with one of your accounts)
 - Activate right mouse click
 - Sleep time missmatch/error
 - Install Virtualbox Error (Needs to be allowed in preferences)
 - Brave extensions are not synced
+- Tyme Sync was not correct
+- Install Operator font automatically?
+- Numbers app missing
