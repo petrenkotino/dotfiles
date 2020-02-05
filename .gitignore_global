@@ -39,3 +39,5 @@ Thumbs.db
 .idea/
 .vscode
 .vagrant/
+.phpunit.result.cache
+
