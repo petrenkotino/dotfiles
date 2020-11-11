@@ -22,7 +22,7 @@ brew 'zsh-completions'
 
 # Development
 brew 'php'
-brew 'php@7.2'
+brew 'php@7.3'
 brew 'composer'
 brew 'mysql'
 brew 'nginx'
@@ -36,6 +36,7 @@ cask 'bartender'
 cask 'brave-browser'
 cask 'docker'
 cask 'dropbox'
+cask 'elgato-control-center'
 cask 'firefox'
 cask 'google-backup-and-sync'
 cask 'google-chrome'
@@ -46,6 +47,7 @@ cask 'insomnia'
 cask 'iterm2'
 cask 'java'
 cask 'now'
+cask 'obs'
 cask 'phpstorm'
 cask 'screenflow'
 cask 'sequel-pro'
@@ -55,6 +57,7 @@ cask 'slack'
 cask 'spectacle'
 cask 'sublime-text'
 cask 'tableplus'
+cask 'tinkerwell'
 cask 'transmit'
 cask 'vagrant'
 cask 'virtualbox'
@@ -83,6 +86,7 @@ cask 'font-source-serif-pro'
 # Install Mac App Store apps
 mas '1Password', id: 1333542190
 mas 'Keynote', id: 409183694
+mas 'Numbers', id: 409203825
 mas 'Logic Pro X', id: 634148309
 mas 'Pages', id:409201541
 mas 'Spark', id: 1176895641
