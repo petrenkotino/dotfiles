@@ -19,27 +19,32 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 ## Installation
 
 - More Details here [here](https://github.com/driesvints/dotfiles)
-- Update macOS to the latest version with the App Store
-- Install Xcode from the App Store, open it and accept the license agreement
-- Install macOS Command Line Tools by running xcode-select --install
-- Copy your public and private SSH keys to ~/.ssh and make sure they're set to 600 (Or Create new ones)
-- Clone this repo to ~/.dotfiles
+- `Update` macOS to the latest version with the App Store
+- `Install Xcode` from the App Store, open it and accept the license agreement
+- `Install macOS Command Line Tools` by running xcode-select --install
+- Copy your public and private `SSH keys to ~/.ssh` and make sure they're set to 600 (Or Create new ones)
+- `Clone` this repo to ~/.dotfiles
 - Install [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh/wiki)
-- Run install.sh to start the installation
+- Run `install.sh (from the dotfiles dir)` to start the installation
 - SignIn to 1Password for Dropbox credentials
-- Open Dropbox and sync Mackup (in my case I use Dropbox)
+- Sync `Mackup` Folder (e.g. Dropbox)
 - After mackup is synced with your cloud storage, restore preferences by running `mackup restore`
 - Restart your computer to finalize the process
+
+## Further Steps
+
 - Install manually
     - Elgato Control Center
+- Permissions
+    - Bartender
+    - Alfred
 
 ## Still Missing
 
 - Backup Spark Mail Accounts (Working if you login in with one of your accounts)
 - Activate right mouse click
 - Sleep time missmatch/error
-- Install Virtualbox Error (Needs to be allowed in preferences)
 - Brave extensions are not synced
-- Tyme Sync was not correct
-- Install Operator font automatically?
-- Numbers app missing
+- Set Github confid details (name, email)
+- Terminal theme?
+- 
