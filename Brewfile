@@ -70,6 +70,7 @@ cask 'quicklook-csv'
 cask 'qlstephen'
 
 # Fonts
+cask 'svn'
 cask 'font-fira-code'
 cask 'font-lora'
 cask 'font-lato'
