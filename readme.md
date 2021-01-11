@@ -22,14 +22,16 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 - Update macOS to the latest version with the App Store
 - Install Xcode from the App Store, open it and accept the license agreement
 - Install macOS Command Line Tools by running xcode-select --install
-- SignIn to 1Password for Dropbox credentials
 - Copy your public and private SSH keys to ~/.ssh and make sure they're set to 600 (Or Create new ones)
 - Clone this repo to ~/.dotfiles
 - Install Oh My Zsh
 - Run install.sh to start the installation
+- SignIn to 1Password for Dropbox credentials
 - Open Dropbox and sync Mackup (in my case I use Dropbox)
 - After mackup is synced with your cloud storage, restore preferences by running `mackup restore`
 - Restart your computer to finalize the process
+- Install manually
+    - Elgato Control Center
 
 ## Still Missing
 
