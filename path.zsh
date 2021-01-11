@@ -18,3 +18,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # Load custom commands
 export PATH="$DOTFILES/bin:$PATH"
 
+
+export LDFLAGS="-L/usr/local/opt/libffi/lib"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+
