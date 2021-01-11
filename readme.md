@@ -24,7 +24,7 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 - Install macOS Command Line Tools by running xcode-select --install
 - Copy your public and private SSH keys to ~/.ssh and make sure they're set to 600 (Or Create new ones)
 - Clone this repo to ~/.dotfiles
-- Install Oh My Zsh
+- Install [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh/wiki)
 - Run install.sh to start the installation
 - SignIn to 1Password for Dropbox credentials
 - Open Dropbox and sync Mackup (in my case I use Dropbox)
