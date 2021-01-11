@@ -47,4 +47,4 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 - Brave extensions are not synced
 - Set Github confid details (name, email)
 - Terminal theme?
-- 
+- Rectangle settings?
