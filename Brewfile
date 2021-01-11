@@ -59,8 +59,6 @@ cask 'transmit'
 cask 'tuple'
 cask 'tyme'
 cask 'vagrant'
-cask 'virtualbox'
-cask 'virtualbox-extension-pack'
 cask 'vlc'
 cask 'zoomus'
 
