@@ -7,8 +7,11 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 ## Backup Checklist
 
 - Did you commit and push any changes/branches to your git repositories?
-- Did you remember to save all important documents from non-iCloud directories?
-- Did you save all of your work from apps which aren't synced through iCloud?
+- Did you copy your .env files to a safe place if they are not casual?
+- Did you copy your IDE settings? (e.g. PhpStorm)
+- Did you backup local databases you need?
+- Did you remember to save all important documents from non-cloud directories?
+- Did you save all of your work from apps which aren't synced through cloud?
     + Insomnia (Export to Dropbox)
 - Did you remember to export important data from your local database? (https://www.tecmint.com/transfer-mysql-databases-from-old-to-new-server/)
 - Did you update [mackup](https://github.com/lra/mackup) to the latest version and ran `mackup backup`?
