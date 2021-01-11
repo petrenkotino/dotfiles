@@ -13,7 +13,6 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 - Did you remember to save all important documents from non-cloud directories?
 - Did you save all of your work from apps which aren't synced through cloud?
     + Insomnia (Export to Dropbox)
-- Did you remember to export important data from your local database? (https://www.tecmint.com/transfer-mysql-databases-from-old-to-new-server/)
 - Did you update [mackup](https://github.com/lra/mackup) to the latest version and ran `mackup backup`?
 - Export Tyme data because it wasn't synced correctly the last time
 
