@@ -165,6 +165,13 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
+
+nd ()
+{
+    mkdir -p -- "$1" &&
+      cd -P -- "$1"
+}
+
 #-----------------------------------------------------------------------------------#
 #	*END* FILE HANDLING
 #-----------------------------------------------------------------------------------#
