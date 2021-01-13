@@ -48,3 +48,6 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 - Set Github confid details (name, email)
 - Terminal theme?
 - Rectangle settings?
+- Operator Mono font
+- Disable Mac sounds
+- Finder Show file extensions
