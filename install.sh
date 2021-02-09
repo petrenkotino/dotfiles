@@ -51,8 +51,10 @@ mkdir $HOME/Sites/Clients
 rm -rf $HOME/.zshrc	
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc	
 
-# Install Pure theme	
-npm install --global pure-prompt	
+# Install Pure theme
+# Did not work on m1 globally anymore
+#npm install --global pure-prompt
+git clone https://github.com/sindresorhus/pure.git "$HOME/.dotfiles/plugins/pure"
 
 # Install ZSH autosuggestion plugin	
 git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.dotfiles/plugins/zsh-autosuggestions	
