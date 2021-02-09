@@ -66,6 +66,8 @@ source $ZSH/oh-my-zsh.sh
 zmodload zsh/nearcolor
 zstyle :prompt:pure:git:branch color green
 
+fpath+=$HOME/.dotfiles/plugins/pure
+
 # Activate Pure Theme
 # Make sure to remove this if you use another theme
 autoload -U promptinit; promptinit
