@@ -51,3 +51,4 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 - Operator Mono font
 - Disable Mac sounds
 - Finder Show file extensions
+- Switch caps lock to Esc, possible through commandline?
