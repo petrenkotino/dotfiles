@@ -19,14 +19,21 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 
 ## Installation
 
-- `Update` macOS to the latest version with the App Store
-- Copy your public and private `SSH keys to ~/.ssh` and make sure they're set to 600 (Or Create new ones)
-- `Clone` this repo to ~/.dotfiles
-- Run `install.sh (from the dotfiles dir)` to start the installation
-- SignIn to 1Password for Dropbox credentials
-- Sync `Mackup` Folder (e.g. Dropbox)
-- After mackup is synced with your cloud storage, restore preferences by running `mackup restore`
-- Restart your computer to finalize the process
+1. `Update` macOS to the latest version with the App Store
+2. Copy your public and private `SSH keys to ~/.ssh` and make sure they're set to 600 (Or Create new ones)
+3. `Clone` this repo to ~/.dotfiles
+    ```zsh
+    git clone git@github.com:christophrumpel/dotfiles.git ~/.dotfiles
+    ```
+4. Start the `Installation`
+    ```zsh
+    ~/.dotfiles/install.sh
+    ```
+5. SignIn to 1Password for Dropbox credentials
+6. Sync `Mackup` Folder (from Dropbox)
+7. After mackup is synced with your cloud storage, restore preferences by running `mackup restore`
+8. Restart your computer to finalize the process
+
 
 ## Further Steps
 
