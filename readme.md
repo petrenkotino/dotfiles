@@ -49,6 +49,7 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
     - Spark: Log in with your main email account to load the others
     - Brave: Using created Sync QR code to sync extensions
     - Copy ssh config from 1Password to `~/.ssh/config`
+    - PhpStorm: enable repository sync `https://github.com/christophrumpel/phpstorm-settings`
 - Set Permissions
     - Bartender
     - Alfred
