@@ -1,6 +1,11 @@
 #!/bin/sh
 
-echo "Setting up your Mac..."	
+echo "Setting up your Mac ❤️..."	
+
+# Check for Oh My Zsh and install if we don't have it
+if test ! $(which omz); then
+  /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
+fi
 
 # Check for Homebrew and install if we don't have it	
 if test ! $(which brew); then	
@@ -10,16 +15,22 @@ fi
 # Update Homebrew recipes	
 brew update
 
+# Install all the dependencies with bundle (See Brewfile)
 brew tap homebrew/bundle	
 brew bundle
+
+# Git username & password
+git config --global user.email "christoph@christoph-rumpel.com"
+git config --global user.name "Christoph Rumpel"
+
 
 # Set default MySQL root password and auth type.	
 mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"	
 
 # Install PHP extensions with PECL	
-pecl install memcached imagick	
+pecl pecl install imagick redis
 
-# Install Composer	
+# Install global Composer	
 curl -sS https://getcomposer.org/installer | php	
 mv composer.phar /usr/local/bin/composer	
 
@@ -29,20 +40,15 @@ mv composer.phar /usr/local/bin/composer
 # Install Laravel Valet	
 $HOME/.composer/vendor/bin/valet install	
 
-# Create a Sites directory	
-mkdir $HOME/Sites	
-
-# Create a Test Sites directory	
+# Create a Sites directories	
+mkdir $HOME/Sites
 mkdir $HOME/Sites/Tests	
-
-# Create Packages directory	
 mkdir $HOME/Sites/Packages	
-
-# Create Forks directory	
 mkdir $HOME/Sites/Forks	
+mkdir $HOME/Sites/Clients
 
-# Create Clients directory	
-mkdir $HOME/Sites/Clients	
+# Create directory for screenshots  
+mkdir $HOME/Desktop/Screenshots/
 
 # Clone Github repositories	
 ./clone.sh	
@@ -62,9 +68,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.dotfiles/plugi
 
 # Symlink the Mackup config file to the home directory	
 ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg	
-
-# Create directory for screenshots	
-mkdir $HOME/Desktop/Screenshots/	
 
 # Set macOS preferences	
 # We will run this last because this will reload the shell	

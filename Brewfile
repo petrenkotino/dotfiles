@@ -3,6 +3,7 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
+tap 'nicoverbruggen/homebrew-cask'
 
 # Install Binaries
 brew 'bash' # Latest Bash version
@@ -22,8 +23,8 @@ brew 'zsh-completions'
 
 # Development
 brew 'php'
-brew 'php@7.4'
 brew 'php@8.0'
+brew 'php@8.1'
 brew 'composer'
 brew 'mysql'
 brew 'nginx'
@@ -35,20 +36,24 @@ brew 'yarn'
 cask 'alfred'
 cask 'bartender'
 cask 'brave-browser'
+cask 'cleanshot'
 cask 'docker'
 cask 'dropbox'
+cask 'elgato-control-center'
+cask 'expressvpn'
 cask 'firefox'
 cask 'gifox'
-cask 'google-backup-and-sync'
 cask 'google-chrome'
 cask 'grammarly'
+cask 'helo'
 cask 'imageoptim'
 cask 'insomnia'
-cask 'iterm2'
+cask 'hyper'
 cask 'adoptopenjdk'
 cask 'now'
-cask 'obs'
 cask 'phpstorm'
+cask 'ray'
+cask 'raycast'
 cask 'rectangle'
 cask 'screenflow'
 cask 'sip'
@@ -86,3 +91,4 @@ mas 'Pages', id:409201541
 mas 'Spark', id: 1176895641
 mas 'The Unarchiver', id: 425424353
 mas 'Tyme 3 - Time tracking', id: 1461456897
+mas 'Unsplash Wallpapers', id: 1284863847
