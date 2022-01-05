@@ -35,10 +35,9 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 8. `Restart your computer` to finalize the process
 
 
-## Further Steps
+## Additional Steps
 
-- Install manually
-    - Elgato Control Center
+- Install apps manually
     - Davinci Resolve
     - Ecamm Live
     - Descript
@@ -47,7 +46,7 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
     - Spark: Log in with your main email account to load the others
     - Brave: Using created Sync QR code to sync extensions
     - Copy ssh config from 1Password to `~/.ssh/config`
-- Permissions
+- Set Permissions
     - Bartender
     - Alfred
 
@@ -55,7 +54,6 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 
 - Activate right mouse click
 - Sleep time missmatch/error
-- Terminal theme?
 - Rectangle settings?
 - Operator Mono font
 - Disable Mac sounds
