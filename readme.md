@@ -14,7 +14,6 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 - Did you save all of your work from apps which aren't synced through cloud?
     + Insomnia (Export to Dropbox)
 - Did you update [mackup](https://github.com/lra/mackup) to the latest version and ran `mackup backup`?
-- Export Tyme data because it wasn't synced correctly the last time
 - Create "Brave Sync" QR Code (Settings / Sync)
 
 ## Installation
