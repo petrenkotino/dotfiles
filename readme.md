@@ -23,18 +23,19 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 ```zsh
    curl https://raw.githubusercontent.com/christophrumpel/dotfiles/master/ssh.sh | sh -s "christoph@christoph-rumpel.com"
    ```
-3. `Clone dotfiles` to ~/.dotfiles (you will be asked to download command line tools)
+3. `Sign to 1Password` and add new SSH keys to GitHub (for loading private repos)
+4. `Clone dotfiles` to ~/.dotfiles (you will be asked to download command line tools)
     ```zsh
     git clone https://github.com/christophrumpel/dotfiles.git ~/.dotfiles
     ```
-4. `Run Installation` script
+5. `Run Installation` script
     ```zsh
     ~/.dotfiles/install.sh
     ```
-5. `SignIn to 1Password` for Dropbox credentials
-6. `Sync Mackup` Folder (from Dropbox)
-7. `Restore Mac settings" After mackup is synced with your cloud storage, by running `mackup restore`
-8. `Restart your computer` to finalize the process
+6. `Log in to Dropbox` and sync folders
+7. `Sync Mackup` Folder (from Dropbox)
+8. `Restore Mac settings" After mackup is synced with your cloud storage, by running `mackup restore`
+9. `Restart your computer` to finalize the process
 
 
 ## Additional Steps
