@@ -30,18 +30,15 @@ brew tap homebrew/bundle
 brew tap homebrew/cask-drivers
 brew bundle --file $HOME/.dotfiles/Brewfile
 
-# Set default MySQL root password and auth type.	
+# Set default MySQL root password and auth type.
+brew services restart mysql
 mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"	
 
 # Install PHP extensions with PECL	
-pecl pecl install imagick redis
-
-# Install global Composer	
-curl -sS https://getcomposer.org/installer | php	
-mv composer.phar /usr/local/bin/composer	
+pecl install imagick redis
 
 # Install global Composer packages	
-/usr/local/bin/composer global require laravel/installer laravel/spark-installer laravel/valet	
+/usr/local/bin/composer global require laravel/installer laravel/spark-installer laravel/valet beyondcode/expose	
 
 # Install Laravel Valet	
 $HOME/.composer/vendor/bin/valet install	
