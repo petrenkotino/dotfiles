@@ -22,8 +22,12 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 # Update Homebrew recipes	
 brew update
 
+# Install Rosetta
+sudo softwareupdate --install-rosetta
+
 # Install all the dependencies with bundle (See Brewfile)
-brew tap homebrew/bundle	
+brew tap homebrew/bundle
+brew tap homebrew/cask-drivers
 brew bundle --file $DOTFILES/Brewfile
 
 # Set default MySQL root password and auth type.	
