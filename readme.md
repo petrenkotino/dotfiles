@@ -23,9 +23,9 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 ```zsh
    curl https://raw.githubusercontent.com/christophrumpel/dotfiles/master/ssh.sh | sh -s "christoph@christoph-rumpel.com"
    ```
-3. `Clone dotfiles` to ~/.dotfiles
+3. `Clone dotfiles` to ~/.dotfiles (you will be asked to download command line tools)
     ```zsh
-    git clone git@github.com:christophrumpel/dotfiles.git ~/.dotfiles
+    git clone https://github.com/christophrumpel/dotfiles.git ~/.dotfiles
     ```
 4. `Run Installation` script
     ```zsh
