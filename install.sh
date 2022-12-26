@@ -31,30 +31,16 @@ brew tap homebrew/cask-drivers
 brew bundle --file $HOME/.dotfiles/Brewfile
 
 # Set default MySQL root password and auth type.
-brew services restart mysql
-mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"	
-
-# Install PHP extensions with PECL	
-pecl install imagick redis
-
-# Install global Composer packages	
-/usr/local/bin/composer global require laravel/installer laravel/spark-installer laravel/valet beyondcode/expose	
-
-# Install Laravel Valet	
-$HOME/.composer/vendor/bin/valet install	
+# brew services restart mysql
+# mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"	
 
 # Create a Sites directories	
-mkdir $HOME/Sites
-mkdir $HOME/Sites/Tests	
-mkdir $HOME/Sites/Packages	
-mkdir $HOME/Sites/Forks	
-mkdir $HOME/Sites/Clients
+# mkdir $HOME/Sites
+# mkdir $HOME/Sites/Tests	
+# mkdir $HOME/Sites/Packages	
+# mkdir $HOME/Sites/Forks	
+# mkdir $HOME/Sites/Clients
 
-# Create directory for screenshots  
-mkdir $HOME/Desktop/Screenshots/
-
-# Clone Github repositories	
-./clone.sh	
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles	
 rm -rf $HOME/.zshrc	
@@ -68,10 +54,14 @@ git clone https://github.com/sindresorhus/pure.git "$HOME/.dotfiles/plugins/pure
 # Install ZSH autosuggestion plugin	
 git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.dotfiles/plugins/zsh-autosuggestions	
 
+# Install zsh-nvm
+g clone https://github.com/lukechilds/zsh-nvm.git ~/.zsh-nvm
+source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
-# Symlink the Mackup config file to the home directory	
-ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg	
+# # Symlink the Mackup config file to the home directory	
+# ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg	
 
 # Set macOS preferences	
 # We will run this last because this will reload the shell	
-source .macos
+# TODO check the contents of the file; adjust; uncomment line bellow
+# source .macos

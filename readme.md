@@ -21,12 +21,12 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 1. `Update macOS` to the latest version with the App Store
 2. `Create new SSH keys` or copy given ones to `SSH keys to ~/.ssh` and make sure they're set to 600
 ```zsh
-   curl https://raw.githubusercontent.com/christophrumpel/dotfiles/master/ssh.sh | sh -s "christoph@christoph-rumpel.com"
+   curl https://raw.githubusercontent.com/petrenkotino/dotfiles/master/ssh.sh | sh -s "petrenkotino@gmail.com"
    ```
 3. `Sign to 1Password` and add new SSH keys to GitHub (for loading private repos)
 4. `Clone dotfiles` to ~/.dotfiles (you will be asked to download command line tools)
     ```zsh
-    git clone https://github.com/christophrumpel/dotfiles.git ~/.dotfiles
+    git clone https://github.com/petrenkotino/dotfiles.git ~/.dotfiles
     ```
 5. `Run Installation` script
     ```zsh
@@ -41,24 +41,13 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
 ## Additional Steps
 
 - Install apps manually
-    - Davinci Resolve
-    - Ecamm Live
-    - Descript
-    - Pixelmator Pro Demo (Dropbox/Backups)
+    [NA]
 - Custom Settings
-    - Spark: Log in with your main email account to load the others
-    - Brave: Using created Sync QR code to sync extensions
     - Copy ssh config from 1Password to `~/.ssh/config`
-    - PhpStorm: enable repository sync `https://github.com/christophrumpel/phpstorm-settings`
 - Set Permissions
     - Bartender
     - Alfred
 
 ## Still Missing
-
-- Activate right mouse click
-- Sleep time missmatch/error
 - Rectangle settings?
-- Operator Mono font
 - Disable Mac sounds
-- Modifier keys: Switch caps lock to Esc, possible through commandline?
