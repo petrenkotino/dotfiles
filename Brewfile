@@ -30,10 +30,10 @@ brew 'redis'
 brew 'yarn'
 
 # Apps 
-brew caffeine
-brew tableplus
-brew prettier
-brew pure
+brew 'tableplus'
+brew 'caffeine'
+brew 'prettier'
+brew 'pure'
 
 # Apps
 cask 'alfred'
