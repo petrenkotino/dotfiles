@@ -1,4 +1,4 @@
-# Christoph Rumpel's Dotfiles
+# Konstantin's Dotfiles
 
 This is a fork from [Dries Vints](https://github.com/driesvints/dotfiles)'s dotfiles. Check out his detailed documentation about all the files. I just changed a few things to better fit my needs.
 
