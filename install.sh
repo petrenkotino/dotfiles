@@ -62,7 +62,7 @@ source $HOME/.dotfiles/plugins/zsh-nvm/zsh-nvm.plugin.zsh
 git clone --depth=1 https://github.com/joepjoosten/aws-cli-mfa-oh-my-zsh.git "$ZSH/custom/plugins/aws-mfa"
 
 # # Symlink the Mackup config file to the home directory	
-# ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg	
+ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg	
 
 # Set macOS preferences	
 # We will run this last because this will reload the shell	
