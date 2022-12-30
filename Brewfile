@@ -28,14 +28,16 @@ brew 'nginx'
 brew 'node'
 brew 'redis'
 brew 'yarn'
-
-# Apps 
-brew 'tableplus'
-brew 'caffeine'
+brew 'pyenv'
 brew 'prettier'
+brew 'postman'
+
 brew 'pure'
 
 # Apps
+cask 'caffeine'
+cask 'rectangle'
+cask 'tableplus'
 cask 'alfred'
 cask 'bettertouchtool' # mouse gestures
 cask 'cleanshot'
@@ -51,42 +53,14 @@ cask 'google-chrome'
 cask 'grammarly'
 cask 'iterm2'
 cask 'freedom'
-# cask 'insomnia'
-# cask 'hyper'
-# cask 'adoptopenjdk'
-# cask 'now'
-# cask 'ray'
-# cask 'raycast'
-# cask 'rectangle'
+cask 'spotify'
+# cask 'zoom'
 # cask 'screenflow'
-# cask 'skype'
-# cask 'sublime-text'
-# cask 'tableplus'
-# cask 'tinkerwell'
-# cask 'transmit'
 # cask 'tuple'
 # cask 'tyme'
-# cask 'vlc'
-# cask 'zoom'
 
-# Quicklook
-# cask 'qlcolorcode'
-# cask 'qlmarkdown'
-# cask 'quicklook-json'
-# cask 'quicklook-csv'
-# cask 'qlstephen'
-
-# Fonts
-# cask 'font-fira-code'
-# cask 'font-lato'
 
 # Install Mac App Store apps
-# mas '1Password', id: 1333542190
 mas 'Keynote', id: 409183694
 mas 'Numbers', id: 409203825
-# mas 'Logic Pro X', id: 634148309
 mas 'Pages', id:409201541
-# mas 'Spark', id: 1176895641
-# mas 'The Unarchiver', id: 425424353
-# mas 'Tyme 3 - Time tracking', id: 1461456897
-mas 'Unsplash Wallpapers', id: 1284863847

@@ -49,14 +49,17 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 # Install Pure theme
 # Did not work on m1 globally anymore
 #npm install --global pure-prompt
-git clone https://github.com/sindresorhus/pure.git "$HOME/.dotfiles/plugins/pure"
+git clone https://github.com/sindresorhus/pure.git "$ZSH/custom/plugins/pure"
 
 # Install ZSH autosuggestion plugin	
-git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.dotfiles/plugins/zsh-autosuggestions	
+git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH/custom/plugins/zsh-autosuggestions"	
 
 # Install zsh-nvm
-g clone https://github.com/lukechilds/zsh-nvm.git ~/.zsh-nvm
-source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+git clone https://github.com/lukechilds/zsh-nvm.git "$ZSH/custom/plugins/zsh-nvm"
+source $HOME/.dotfiles/plugins/zsh-nvm/zsh-nvm.plugin.zsh
+
+# Install aws-mfa
+git clone --depth=1 https://github.com/joepjoosten/aws-cli-mfa-oh-my-zsh.git "$ZSH/custom/plugins/aws-mfa"
 
 # # Symlink the Mackup config file to the home directory	
 # ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg	
