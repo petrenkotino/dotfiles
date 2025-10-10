@@ -34,29 +34,27 @@ brew bundle --file $HOME/.dotfiles/Brewfile
 # brew services restart mysql
 # mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"	
 
-# Create a Sites directories	
-# mkdir $HOME/Sites
-# mkdir $HOME/Sites/Tests	
-# mkdir $HOME/Sites/Packages	
-# mkdir $HOME/Sites/Forks	
-# mkdir $HOME/Sites/Clients
-
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles	
 rm -rf $HOME/.zshrc	
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc	
 
+mkdir $HOME/.zsh/custom
+ln -s $HOME/.dotfiles/aliases.zsh $HOME/.zsh/custom/aliases.zsh
+
+# Install tmux package manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # Install Pure theme
 # Did not work on m1 globally anymore
-#npm install --global pure-prompt
-git clone https://github.com/sindresorhus/pure.git "$ZSH/custom/plugins/pure"
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 
 # Install ZSH autosuggestion plugin	
 git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH/custom/plugins/zsh-autosuggestions"	
 
 # Install zsh-nvm
 git clone https://github.com/lukechilds/zsh-nvm.git "$ZSH/custom/plugins/zsh-nvm"
-source $HOME/.dotfiles/plugins/zsh-nvm/zsh-nvm.plugin.zsh
+source $ZSH/custom/plugins/zsh-nvm/zsh-nvm.plugin.zsh
 
 # Install aws-mfa
 git clone --depth=1 https://github.com/joepjoosten/aws-cli-mfa-oh-my-zsh.git "$ZSH/custom/plugins/aws-mfa"
@@ -67,4 +65,5 @@ ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 # Set macOS preferences	
 # We will run this last because this will reload the shell	
 # TODO check the contents of the file; adjust; uncomment line bellow
-# source .macos
+source .macos
+
