@@ -1,20 +1,42 @@
 #!/bin/sh
 
+set -e
+
+if [ -z "${1:-}" ]; then
+  echo "Usage: ./ssh.sh <email>"
+  exit 1
+fi
+
+EMAIL="$1"
+SSH_DIR="${HOME}/.ssh"
+KEY_PATH="${SSH_DIR}/id_ed25519"
+CONFIG_PATH="${SSH_DIR}/config"
+
 echo "Generating a new SSH key for GitHub..."
 
-# Generating a new SSH key
-# https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key
-ssh-keygen -t ed25519 -C $1 -f ~/.ssh/id_ed25519
+mkdir -p "${SSH_DIR}"
+chmod 700 "${SSH_DIR}"
 
-# Adding your SSH key to the ssh-agent
-# https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent
+if [ -f "${KEY_PATH}" ]; then
+  echo "Key ${KEY_PATH} already exists; skipping generation."
+else
+  ssh-keygen -t ed25519 -C "${EMAIL}" -f "${KEY_PATH}" -N ""
+fi
+
 eval "$(ssh-agent -s)"
 
-touch ~/.ssh/config
-echo "Host *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed25519" | tee ~/.ssh/config
+touch "${CONFIG_PATH}"
+chmod 600 "${CONFIG_PATH}"
 
-ssh-add -K ~/.ssh/id_ed25519
+if ! grep -q "IdentityFile ~/.ssh/id_ed25519" "${CONFIG_PATH}"; then
+  cat <<'EOF' >> "${CONFIG_PATH}"
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+EOF
+fi
 
-# Adding your SSH key to your GitHub account
-# https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account
-echo "run 'pbcopy < ~/.ssh/id_ed25519.pub' and paste that into GitHub"
+ssh-add --apple-use-keychain "${KEY_PATH}"
+
+echo "Run 'pbcopy < ~/.ssh/id_ed25519.pub' and paste that into GitHub."

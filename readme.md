@@ -28,14 +28,30 @@ Be careful when using these dotfiles because they change a lot of MacOS settings
     ```zsh
     git clone https://github.com/petrenkotino/dotfiles.git ~/.dotfiles
     ```
-5. `Run Installation` script
+5. `Run Installation` script (idempotent, safe to re-run)
     ```zsh
     ~/.dotfiles/install.sh
     ```
-6. `Log in to Dropbox` and sync folders
-7. `Sync Mackup` Folder (from Dropbox)
-8. `Restore Mac settings" After mackup is synced with your cloud storage, by running `mackup restore`
-9. `Restart your computer` to finalize the process
+   - This will install Oh My Zsh, Homebrew, brew bundle formulas/casks (Terraform, AWS, Kubernetes, linting tools, etc.), and link shell config files.
+   - macOS defaults are **not** applied automatically anymore. Set `RUN_DOTFILES_MACOS=1 ~/.dotfiles/install.sh` when you explicitly want `.macos` to run.
+6. Optionally `Apply macOS defaults`
+    ```zsh
+    RUN_DOTFILES_MACOS=1 ~/.dotfiles/install.sh
+    ```
+7. `Log in to Dropbox` and sync folders
+8. `Sync Mackup` Folder (from Dropbox)
+9. `Restore Mac settings` after Mackup is synced with your cloud storage, by running `mackup restore`
+10. `Restart your computer` to finalize the process
+
+### SSH keys helper
+
+Generate a GitHub key safely:
+
+```zsh
+~/.dotfiles/ssh.sh "your-email@example.com"
+```
+
+The script preserves existing keys, sets the required permissions, appends to `~/.ssh/config`, and adds the key to the Apple keychain.
 
 
 ## Additional Steps

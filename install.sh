@@ -1,69 +1,81 @@
 #!/bin/sh
 
-echo "Setting up your Mac ❤️..."	
+set -e
 
-# Check for Oh My Zsh and install if we don't have it
-if test ! $(which omz); then
+echo "Setting up your Mac ❤️..."
+
+DOTFILES_DIR="${HOME}/.dotfiles"
+ZSH_CUSTOM_DIR="${HOME}/.zsh/custom"
+OMZ_CUSTOM_DIR="${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}"
+BREWFILE="${DOTFILES_DIR}/Brewfile"
+
+# Install Oh My Zsh if it is missing
+if ! command -v omz >/dev/null 2>&1; then
   /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
 fi
 
-# Check for Homebrew and install if we don't have it	
-if test ! $(which brew); then	
+# Install Homebrew if it is missing
+if ! command -v brew >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "${HOME}/.zprofile"
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
-rm -rf $HOME/.zshrc
-ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
+# Symlink the main zsh config
+ln -sf "${DOTFILES_DIR}/.zshrc" "${HOME}/.zshrc"
 
-# Update Homebrew recipes	
+# Ensure custom zsh folder exists and link aliases
+mkdir -p "${ZSH_CUSTOM_DIR}"
+ln -sf "${DOTFILES_DIR}/aliases.zsh" "${ZSH_CUSTOM_DIR}/aliases.zsh"
+
+# Update Homebrew recipes
 brew update
 
-# Install Rosetta
-sudo softwareupdate --install-rosetta
+# Install Rosetta only on Apple Silicon and only once
+if [ "$(uname -m)" = "arm64" ]; then
+  if ! /usr/bin/pgrep -q oahd; then
+    sudo softwareupdate --install-rosetta --agree-to-license
+  fi
+fi
 
-# Install all the dependencies with bundle (See Brewfile)
+# Install brew bundle dependencies
 brew tap homebrew/bundle
 brew tap homebrew/cask-drivers
-brew bundle --file $HOME/.dotfiles/Brewfile
+brew bundle --file "${BREWFILE}"
 
-# Set default MySQL root password and auth type.
-# brew services restart mysql
-# mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"	
+# Install tmux plugin manager if missing
+if [ ! -d "${HOME}/.tmux/plugins/tpm" ]; then
+  git clone https://github.com/tmux-plugins/tpm "${HOME}/.tmux/plugins/tpm"
+fi
 
+# Install Pure prompt locally if missing
+if [ ! -d "${HOME}/.zsh/pure" ]; then
+  git clone https://github.com/sindresorhus/pure.git "${HOME}/.zsh/pure"
+fi
 
-# Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles	
-rm -rf $HOME/.zshrc	
-ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc	
+# Ensure oh-my-zsh custom plugins exist before cloning
+mkdir -p "${OMZ_CUSTOM_DIR}/plugins"
 
-mkdir $HOME/.zsh/custom
-ln -s $HOME/.dotfiles/aliases.zsh $HOME/.zsh/custom/aliases.zsh
+if [ ! -d "${OMZ_CUSTOM_DIR}/plugins/zsh-autosuggestions" ]; then
+  git clone https://github.com/zsh-users/zsh-autosuggestions "${OMZ_CUSTOM_DIR}/plugins/zsh-autosuggestions"
+fi
 
-# Install tmux package manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [ ! -d "${OMZ_CUSTOM_DIR}/plugins/zsh-nvm" ]; then
+  git clone https://github.com/lukechilds/zsh-nvm.git "${OMZ_CUSTOM_DIR}/plugins/zsh-nvm"
+fi
 
-# Install Pure theme
-# Did not work on m1 globally anymore
-git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+if [ ! -d "${OMZ_CUSTOM_DIR}/plugins/aws-mfa" ]; then
+  git clone --depth=1 https://github.com/joepjoosten/aws-cli-mfa-oh-my-zsh.git "${OMZ_CUSTOM_DIR}/plugins/aws-mfa"
+fi
 
-# Install ZSH autosuggestion plugin	
-git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH/custom/plugins/zsh-autosuggestions"	
+# Symlink the Mackup config file to the home directory
+ln -sf "${DOTFILES_DIR}/.mackup.cfg" "${HOME}/.mackup.cfg"
 
-# Install zsh-nvm
-git clone https://github.com/lukechilds/zsh-nvm.git "$ZSH/custom/plugins/zsh-nvm"
-source $ZSH/custom/plugins/zsh-nvm/zsh-nvm.plugin.zsh
-
-# Install aws-mfa
-git clone --depth=1 https://github.com/joepjoosten/aws-cli-mfa-oh-my-zsh.git "$ZSH/custom/plugins/aws-mfa"
-
-# # Symlink the Mackup config file to the home directory	
-ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg	
-
-# Set macOS preferences	
-# We will run this last because this will reload the shell	
-# TODO check the contents of the file; adjust; uncomment line bellow
-source .macos
-
+# Apply macOS preferences only on explicit request
+if [ "${RUN_DOTFILES_MACOS:-0}" = "1" ]; then
+  # shellcheck disable=SC1090
+  . "${DOTFILES_DIR}/.macos"
+else
+  echo "Skipping macOS defaults (set RUN_DOTFILES_MACOS=1 to apply)."
+fi
