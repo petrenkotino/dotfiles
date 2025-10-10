@@ -1,0 +1,163 @@
+{
+  "editor.multiCursorModifier": "alt",
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnType": true,
+  "tslint.autoFixOnSave": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "typescript.implementationsCodeLens.enabled": true,
+  "window.restoreWindows": "all",
+  "workbench.startupEditor": "newUntitledFile",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+  "gitlens.remotes": [{ "domain": "github.com-tocaboca", "type": "GitHub" }],
+  "gitlens.integrations.enabled": true,
+  "window.openFoldersInNewWindow": "on",
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "prettier.singleQuote": true,
+  "explorer.confirmDelete": false,
+  "prettier.eslintIntegration": true,
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "eslint.alwaysShowStatus": true,
+  "mochaExplorer.timeout": 50000,
+  "mochaExplorer.files": "test/**/*.test.js",
+  "mochaExplorer.env": { "NODE_ENV": "local-proddata" },
+  "mochaExplorer.exit": true,
+  "mochaExplorer.debuggerConfig": "Debug Mocha Tests",
+  "python.pythonPath": "/usr/local/bin/python3",
+  "python.showStartPage": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
+  "yaml.validate": false,
+  "debug.javascript.autoAttachFilter": "smart",
+  "mochaExplorer.configFile": "",
+  "redhat.telemetry.enabled": true,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "git.autofetch": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.inlineSuggest.enabled": true,
+  "prettier.configPath": ".prettierrc",
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "GitHub Dark",
+  "workbench.preferredLightColorTheme": "Solarized Light",
+  "workbench.preferredHighContrastColorTheme": "Quiet Light",
+  "editor.formatOnPaste": true,
+  "grammarly.files.include": [
+    "**/readme.md",
+    "**/README.md",
+    "**/*.txt",
+    "**/*.md",
+    "*.md"
+  ],
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.formatAll.terraform": "explicit"
+    }
+  },
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.formatAll.terraform": "explicit"
+    }
+  },
+  "githubPullRequests.pullBranch": "never",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "git.ignoreRebaseWarning": true,
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "wrap_attributes": "force-expand-multiline"
+    },
+    "prettyhtml": {
+      "printWidth": 100,
+      "singleQuote": false,
+      "wrapAttributes": false,
+      "sortAttributes": false
+    }
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {},
+  "nxConsole.showNodeVersionOnStartup": false,
+  "yaml.format.enable": false,
+  "http.proxySupport": "fallback",
+  "githubPullRequests.pushBranch": "always",
+  "githubPullRequests.fileListLayout": "flat",
+  "go.toolsManagement.autoUpdate": true,
+  "git.confirmSync": false,
+  "githubLocalActions.dockerDesktopPath": "/Applications/Rancher\\ Desktop.app",
+  "vs-kubernetes": {
+    "vscode-kubernetes.kubectl-path-mac": "/Users/tino/.vs-kubernetes/tools/kubectl/kubectl",
+    "vscode-kubernetes.helm-path-mac": "/Users/tino/.vs-kubernetes/tools/helm/darwin-arm64/helm",
+    "vscode-kubernetes.minikube-path-mac": "/Users/tino/.vs-kubernetes/tools/minikube/darwin-arm64/minikube"
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "docker.extension.enableComposeLanguageServer": false,
+  "cfnLint.appendRules": [],
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "bluebrown.yamlfmt"
+  },
+  "terraform.mcp.server.enable": true,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "terminal.integrated.shellIntegration.enabled": true
+}

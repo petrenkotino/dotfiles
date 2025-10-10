@@ -10,8 +10,8 @@ OMZ_CUSTOM_DIR="${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}"
 BREWFILE="${DOTFILES_DIR}/Brewfile"
 
 # Install Oh My Zsh if it is missing
-if ! command -v omz >/dev/null 2>&1; then
-  /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
+if [ ! -d "${HOME}/.oh-my-zsh" ]; then
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
 fi
 
 # Install Homebrew if it is missing
@@ -40,8 +40,8 @@ if [ "$(uname -m)" = "arm64" ]; then
 fi
 
 # Install brew bundle dependencies
-brew tap homebrew/bundle
-brew tap homebrew/cask-drivers
+brew tap aws/tap
+brew tap keidarcy/tap
 brew bundle --file "${BREWFILE}"
 
 # Install tmux plugin manager if missing
