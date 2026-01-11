@@ -183,5 +183,6 @@ source <(kubectl completion zsh)
 
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/tino/.rd/bin:$PATH"
+export PATH="/Users/konstantin.petrenko/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+source ~/.zsh/custom/path.zsh

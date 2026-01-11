@@ -54,6 +54,18 @@ log_step "Ensuring custom zsh directory and aliases"
 mkdir -p "${ZSH_CUSTOM_DIR}"
 ln -sf "${DOTFILES_DIR}/aliases.zsh" "${ZSH_CUSTOM_DIR}/aliases.zsh"
 
+log_step "Ensuring custom paths"
+ln -sf "${DOTFILES_DIR}/path.zsh" "${ZSH_CUSTOM_DIR}/path.zsh"
+
+echo "→ Linking ~/bin to ~/.dotfiles/bin scripts..."
+mkdir -p ~/bin
+for script in ~/.dotfiles/bin/*; do
+  ln -sf "$script" ~/bin/
+done
+
+chmod +x ~/.dotfiles/bin/*
+echo "✅ Bin scripts linked and executable."
+
 # Update Homebrew recipes
 log_step "Updating Homebrew formulae"
 brew update
@@ -78,6 +90,10 @@ fi
 
 if ! brew tap | grep -q "^keidarcy/tap$"; then
   brew tap keidarcy/tap
+fi
+
+if ! brew tap | grep -q "^hashicorp/tap$"; then
+  brew tap hashicorp/tap
 fi
 
 log_step "Installing Homebrew bundle packages"

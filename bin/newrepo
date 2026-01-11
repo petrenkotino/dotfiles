@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# newrepo <git_url> [optional_repo_name]
+# Clones a repo into dev/<repo_name>/main and sets it up for worktrees.
+
+set -euo pipefail
+
+if [ $# -lt 1 ]; then
+  echo "Usage: newrepo <git_url> [repo_name] [main_branch]"
+  exit 1
+fi
+
+REPO_URL="$1"
+REPO_NAME="${2:-$(basename -s .git "$REPO_URL")}"
+MAIN_BRANCH="${3:-main}"
+DEV_ROOT="${HOME}/dev"
+
+mkdir -p "${DEV_ROOT}/${REPO_NAME}"
+cd "${DEV_ROOT}/${REPO_NAME}"
+echo "→ Created directory ${DEV_ROOT}/${REPO_NAME} ..."
+
+# Clone into 'main'
+echo "→ Cloning ${REPO_URL} into ${DEV_ROOT}/${REPO_NAME}/${MAIN_BRANCH} ..."
+git clone "$REPO_URL" "$MAIN_BRANCH"
+
+cd "$MAIN_BRANCH"
+
+# Fetch latest branches and tags
+git fetch --all --prune --tags
+
+# Optional: Set 'main' as protected (so you don't accidentally develop there)
+git config advice.detachedHead false
+git config alias.protect '!echo "⚠️  Don’t commit directly on ${MAIN_BRANCH}"; exit 1'
+
+echo "✅ Repo ready: ${DEV_ROOT}/${REPO_NAME}/${MAIN_BRANCH}"
+echo "To create a new worktree:"
+echo "  cd ${DEV_ROOT}/${REPO_NAME}/${MAIN_BRANCH}"
+echo "  gwtc feature-branch-name"

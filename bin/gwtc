@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# gwt <branch-name> [base-branch]
+# Creates a new worktree and optionally opens it in VS Code.
+
+set -euo pipefail
+
+if [ $# -lt 1 ]; then
+  echo "Usage: gwt <branch-name> [base-branch]"
+  exit 1
+fi
+
+BRANCH="$1"
+BASE="${2:-origin/main}"
+ROOT=$(git rev-parse --show-toplevel)
+PARENT=$(dirname "$ROOT")
+
+echo "→ Creating worktree '$BRANCH' from '$BASE'..."
+git fetch origin
+git worktree add "$PARENT/$BRANCH" -b "$BRANCH" "$BASE"
+cd "$PARENT/$BRANCH"
+
+if command -v code &> /dev/null; then
+  echo "🪄 Opening in VS Code..."
+  code .
+fi
+
+echo "✅ Worktree created: $(pwd)"
