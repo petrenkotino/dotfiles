@@ -186,3 +186,6 @@ source <(kubectl completion zsh)
 export PATH="/Users/konstantin.petrenko/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 source ~/.zsh/custom/path.zsh
+
+# Added by Antigravity
+export PATH="/Users/konstantin.petrenko/.antigravity/antigravity/bin:$PATH"

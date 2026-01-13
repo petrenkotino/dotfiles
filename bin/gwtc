@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # gwt <branch-name> [base-branch]
-# Creates a new worktree and optionally opens it in VS Code.
+# Creates a new worktree and optionally opens it in VS Code or Antigravity.
 
 set -euo pipefail
 
@@ -19,9 +19,38 @@ git fetch origin
 git worktree add "$PARENT/$BRANCH" -b "$BRANCH" "$BASE"
 cd "$PARENT/$BRANCH"
 
+# Check available editors
+HAS_CODE=false
+HAS_AGY=false
+
 if command -v code &> /dev/null; then
+  HAS_CODE=true
+fi
+if command -v agy &> /dev/null; then
+  HAS_AGY=true
+fi
+
+if [ "$HAS_CODE" = true ] && [ "$HAS_AGY" = true ]; then
+  echo "Select an editor to open the worktree:"
+  echo "1) VS Code"
+  echo "2) Antigravity"
+  read -p "Enter choice [1/2]: " -n 1 -r
+  echo ""
+  if [[ $REPLY =~ ^[1]$ ]]; then
+    echo "🪄 Opening in VS Code..."
+    code .
+  elif [[ $REPLY =~ ^[2]$ ]]; then
+    echo "🪄 Opening in Antigravity..."
+    agy .
+  else
+    echo "Skipping editor."
+  fi
+elif [ "$HAS_CODE" = true ]; then
   echo "🪄 Opening in VS Code..."
   code .
+elif [ "$HAS_AGY" = true ]; then
+  echo "🪄 Opening in Antigravity..."
+  agy .
 fi
 
 echo "✅ Worktree created: $(pwd)"
