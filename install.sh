@@ -48,6 +48,7 @@ fi
 # Symlink the main zsh config
 log_step "Linking shell configuration"
 ln -sf "${DOTFILES_DIR}/.zshrc" "${HOME}/.zshrc"
+ln -sf "${DOTFILES_DIR}/.tmux.conf" "${HOME}/.tmux.conf"
 
 # Ensure custom zsh folder exists and link aliases
 log_step "Ensuring custom zsh directory and aliases"
