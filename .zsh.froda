@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+autoload bashcompinit && bashcompinit
+source $(brew --prefix)/etc/bash_completion.d/az
+
+export KUBECONFIG=$(find ~/.kube/froda -name '*-kubeconfig' | tr '\n' ':')

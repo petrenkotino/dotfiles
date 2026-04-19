@@ -79,7 +79,7 @@ plugins=(git zsh-nvm zsh-autosuggestions 1password)
 # Configure Shell Completion https://docs.brew.sh/Shell-Completion
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-source /opt/homebrew/share/zsh/site-functions/kubesess.sh
+eval "$(kubesess init zsh)"
 
 
 # Set zsh-autosuggestions color
@@ -158,7 +158,7 @@ if [ -f '/Users/tino/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/
 
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
 
 # ripgrep
 export FZF_DEFAULT_OPTS='--height=70% --preview="cat {}" --preview-window=right:60%:wrap'
@@ -189,3 +189,7 @@ source ~/.zsh/custom/path.zsh
 
 # Added by Antigravity
 export PATH="/Users/konstantin.petrenko/.antigravity/antigravity/bin:$PATH"
+
+
+# Froda settings:
+source ~/.zsh/custom/.zsh.froda

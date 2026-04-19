@@ -54,7 +54,6 @@ brew 'kubectx'
 brew 'kubesess'
 brew 'make'
 brew 'nvm'
-brew 'codex'
 
 # Apps
 cask 'caffeine'
@@ -79,6 +78,7 @@ cask 'rancher'
 cask 'session-manager-plugin'
 cask 'claude-code'
 cask 'chatgpt'
+cask 'codex'
 
 
 # Install Mac App Store apps

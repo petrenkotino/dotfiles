@@ -145,6 +145,10 @@ fi
 log_step "Linking Mackup configuration"
 ln -sf "${DOTFILES_DIR}/.mackup.cfg" "${HOME}/.mackup.cfg"
 
+# Froda
+log_step "Ensuring custom froda config"
+ln -sf "${DOTFILES_DIR}/.zsh.froda" "${ZSH_CUSTOM_DIR}/.zsh.froda"
+
 # Apply macOS preferences only on explicit request
 if [ "${RUN_DOTFILES_MACOS:-0}" = "1" ]; then
   log_step "Applying macOS defaults"
@@ -153,3 +157,4 @@ if [ "${RUN_DOTFILES_MACOS:-0}" = "1" ]; then
 else
   echo "Skipping macOS defaults (set RUN_DOTFILES_MACOS=1 to apply)."
 fi
+
