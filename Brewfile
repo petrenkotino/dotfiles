@@ -27,6 +27,7 @@ brew 'tfsec'
 brew 'checkov'
 brew 'hadolint'
 brew 'krew'
+brew 'tofu'
 # brew 'zsh'
 # brew 'zsh-completions'
 
