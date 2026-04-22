@@ -12,26 +12,27 @@ fi
 REPO_URL="$1"
 REPO_NAME="${2:-$(basename -s .git "$REPO_URL")}"
 MAIN_BRANCH="${3:-main}"
-DEV_ROOT="${HOME}/dev"
+DEST="${PWD}/${REPO_NAME}"
 
-mkdir -p "${DEV_ROOT}/${REPO_NAME}"
-cd "${DEV_ROOT}/${REPO_NAME}"
-echo "→ Created directory ${DEV_ROOT}/${REPO_NAME} ..."
+mkdir -p "$DEST"
+cd "$DEST"
+echo "→ Created directory ${DEST} ..."
 
-# Clone into 'main'
-echo "→ Cloning ${REPO_URL} into ${DEV_ROOT}/${REPO_NAME}/${MAIN_BRANCH} ..."
-git clone "$REPO_URL" "$MAIN_BRANCH"
+# Bare clone setup for worktrees
+echo "→ Cloning ${REPO_URL} (bare) into ${DEST}/.bare ..."
+git clone --bare -c remote.origin.fetch="+refs/heads/*:refs/remotes/origin/*" "$REPO_URL" .bare
+echo "gitdir: ./.bare" > .git
 
-cd "$MAIN_BRANCH"
+cd .bare
 
 # Fetch latest branches and tags
 git fetch --all --prune --tags
 
-# Optional: Set 'main' as protected (so you don't accidentally develop there)
-git config advice.detachedHead false
-git config alias.protect '!echo "⚠️  Don’t commit directly on ${MAIN_BRANCH}"; exit 1'
+# Check out main branch as a worktree
+cd "$DEST"
+git worktree add "$MAIN_BRANCH" "$MAIN_BRANCH"
 
-echo "✅ Repo ready: ${DEV_ROOT}/${REPO_NAME}/${MAIN_BRANCH}"
+echo "✅ Repo ready: ${DEST}/${MAIN_BRANCH}"
 echo "To create a new worktree:"
-echo "  cd ${DEV_ROOT}/${REPO_NAME}/${MAIN_BRANCH}"
+echo "  cd ${DEST}/${MAIN_BRANCH}"
 echo "  gwtc feature-branch-name"

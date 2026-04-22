@@ -79,9 +79,6 @@ plugins=(git zsh-nvm zsh-autosuggestions 1password)
 # Configure Shell Completion https://docs.brew.sh/Shell-Completion
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-eval "$(kubesess init zsh)"
-
-
 # Set zsh-autosuggestions color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 
@@ -193,3 +190,4 @@ export PATH="/Users/konstantin.petrenko/.antigravity/antigravity/bin:$PATH"
 
 # Froda settings:
 source ~/.zsh/custom/.zsh.froda
+eval "$(kubesess init zsh)"

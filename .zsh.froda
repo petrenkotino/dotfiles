@@ -1,5 +1,20 @@
 #!/bin/zsh
 
+
+# repush <pr-id>
+function repush() {
+  local pr=$1
+
+  local title=$(gh pr view "$pr" --json title --jq '.title')
+  local body=$(gh pr view "$pr" --json body --jq '.body')
+
+  gh pr checkout "$pr"
+
+  gh pr create \
+    --title "$title" \
+    --body-file <(cat <<< "$body")
+}
+
 autoload bashcompinit && bashcompinit
 source $(brew --prefix)/etc/bash_completion.d/az
 
