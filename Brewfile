@@ -55,6 +55,7 @@ brew 'kubectx'
 brew 'kubesess'
 brew 'make'
 brew 'nvm'
+brew 'lazygit'
 
 # Apps
 cask 'caffeine'
