@@ -11,13 +11,12 @@ fi
 
 BRANCH="$1"
 BASE="${2:-origin/main}"
-ROOT=$(git rev-parse --show-toplevel)
-PARENT=$(dirname "$ROOT")
+ROOT=$(pwd)
 
 echo "→ Creating worktree '$BRANCH' from '$BASE'..."
 git fetch origin
-git worktree add "$PARENT/$BRANCH" -b "$BRANCH" "$BASE"
-cd "$PARENT/$BRANCH"
+git worktree add "$ROOT/$BRANCH" -b "$BRANCH" "$BASE"
+cd "$ROOT/$BRANCH"
 
 # Check available editors
 HAS_CODE=false
