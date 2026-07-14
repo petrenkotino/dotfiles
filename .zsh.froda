@@ -18,4 +18,6 @@ function repush() {
 autoload bashcompinit && bashcompinit
 source $(brew --prefix)/etc/bash_completion.d/az
 
+source ~/.zsh/custom/aliases-froda.zsh
+
 export KUBECONFIG=$(find ~/.kube/froda -name '*-kubeconfig' | tr '\n' ':')
