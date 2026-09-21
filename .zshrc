@@ -180,14 +180,19 @@ source <(kubectl completion zsh)
 
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/konstantin.petrenko/.rd/bin:$PATH"
+export PATH="$HOME/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 source ~/.zsh/custom/path.zsh
 
 # Added by Antigravity
-export PATH="/Users/konstantin.petrenko/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 
 # Froda settings:
 source ~/.zsh/custom/.zsh.froda
 eval "$(kubesess init zsh)"
+
+# Added by froda-ai scripts/setup-global-context.sh
+export NODE_EXTRA_CA_CERTS="$HOME/.froda/internal-froda-dev-ca.pem"
+
+export PATH="$HOME/.local/bin:$PATH"
