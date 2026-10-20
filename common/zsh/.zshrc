@@ -1,7 +1,13 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+[[ -d /opt/homebrew/opt/gnu-sed/libexec/gnubin ]] && export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+[[ -d "${KREW_ROOT:-$HOME/.krew}/bin" ]] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+
+# PATH first, so the tool checks below can find ~/.local/bin, ~/bin, etc.
+# typeset -U keeps PATH free of duplicates however often entries get prepended
+typeset -U path PATH
+[[ -f ~/.zsh/custom/path.zsh ]] && source ~/.zsh/custom/path.zsh
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -73,11 +79,12 @@ ZSH_CUSTOM=$ZSH/custom
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-nvm zsh-autosuggestions 1password)
+plugins=(git zsh-nvm zsh-autosuggestions)
+(( $+commands[op] )) && plugins+=(1password)
 
 
 # Configure Shell Completion https://docs.brew.sh/Shell-Completion
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+(( $+commands[brew] )) && FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 # Set zsh-autosuggestions color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
@@ -109,23 +116,33 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source ~/.zsh/custom/aliases.zsh
+for f in ~/.zsh/custom/{aliases,aliases-os}.zsh(N); do source "$f"; done
 
-eval "$(pyenv init -)"
+# Python is managed by uv; pyenv init stays only for macOS projects not yet migrated
+(( $+commands[pyenv] )) && eval "$(pyenv init -)"
+if (( $+commands[uv] )); then
+  eval "$(uv generate-shell-completion zsh)"
+  eval "$(uvx --generate-shell-completion zsh)"
+fi
+
+(( $+commands[direnv] )) && eval "$(direnv hook zsh)"
 
 # Change Pure Colors
 zmodload zsh/nearcolor
 zstyle :prompt:pure:git:branch color green
 zstyle :prompt:pure:path color cyan
 
-fpath+=$HOME/.zsh/pure
+if [[ -d $HOME/.zsh/pure ]]; then
+  fpath+=$HOME/.zsh/pure
 
-# Activate Pure Theme
-# Make sure to remove this if you use another theme
-autoload -U promptinit; promptinit
-prompt pure
+  # Activate Pure Theme
+  # Make sure to remove this if you use another theme
+  autoload -U promptinit; promptinit
+  prompt pure
+fi
 
 # NVM use default
+if (( $+functions[nvm] )); then
 autoload -U add-zsh-hook
 load-nvmrc() {
   local node_version="$(nvm version)"
@@ -139,23 +156,18 @@ load-nvmrc() {
     elif [ "$nvmrc_node_version" != "$node_version" ]; then
       nvm use
     fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
+  elif [ "$(nvm version default)" != "N/A" ] && [ "$node_version" != "$(nvm version default)" ]; then
     echo "Reverting to nvm default version"
     nvm use default
   fi
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/tino/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tino/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/tino/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tino/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+fi
 
 
 # fzf
-eval "$(fzf --zsh)"
+(( $+commands[fzf] )) && eval "$(fzf --zsh)"
 
 # ripgrep
 export FZF_DEFAULT_OPTS='--height=70% --preview="cat {}" --preview-window=right:60%:wrap'
@@ -170,29 +182,27 @@ fd() {
  cd "$dir"
 }
 
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+if (( $+commands[brew] )); then
+  for f in "$(brew --prefix)"/share/google-cloud-sdk/{path,completion}.zsh.inc(N); do source "$f"; done
+fi
 
 #kubectl autocompletion
 autoload -Uz compinit
 compinit
-source <(kubectl completion zsh)
+(( $+commands[kubectl] )) && source <(kubectl completion zsh)
 
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="$HOME/.rd/bin:$PATH"
+[[ -d $HOME/.rd/bin ]] && export PATH="$HOME/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-source ~/.zsh/custom/path.zsh
 
 # Added by Antigravity
-export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+[[ -d $HOME/.antigravity/antigravity/bin ]] && export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 
-# Froda settings:
-source ~/.zsh/custom/.zsh.froda
-eval "$(kubesess init zsh)"
+# Froda settings (work machine only; not linked on Linux):
+[[ -f ~/.zsh/custom/.zsh.froda ]] && source ~/.zsh/custom/.zsh.froda
+(( $+commands[kubesess] )) && eval "$(kubesess init zsh)"
 
 # Added by froda-ai scripts/setup-global-context.sh
-export NODE_EXTRA_CA_CERTS="$HOME/.froda/internal-froda-dev-ca.pem"
-
-export PATH="$HOME/.local/bin:$PATH"
+[[ -f $HOME/.froda/internal-froda-dev-ca.pem ]] && export NODE_EXTRA_CA_CERTS="$HOME/.froda/internal-froda-dev-ca.pem"
