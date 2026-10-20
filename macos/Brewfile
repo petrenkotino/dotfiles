@@ -33,7 +33,7 @@ brew 'tofu'
 
 # Development
 brew 'nginx'
-brew 'pyenv'
+brew 'uv' # Python versions, venvs and tools (replaces pyenv)
 brew 'prettier'
 brew 'hashicorp/tap/terraform'
 brew 'terragrunt'
