@@ -79,7 +79,9 @@ ZSH_CUSTOM=$ZSH/custom
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-nvm zsh-autosuggestions)
+plugins=(git zsh-autosuggestions)
+# Node: fnm when installed (macOS), otherwise zsh-nvm (Linux)
+(( $+commands[fnm] )) || plugins+=(zsh-nvm)
 (( $+commands[op] )) && plugins+=(1password)
 
 
@@ -118,8 +120,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 for f in ~/.zsh/custom/{aliases,aliases-os}.zsh(N); do source "$f"; done
 
-# Python is managed by uv; pyenv init stays only for macOS projects not yet migrated
-(( $+commands[pyenv] )) && eval "$(pyenv init -)"
+# Python is managed by uv
 if (( $+commands[uv] )); then
   eval "$(uv generate-shell-completion zsh)"
   eval "$(uvx --generate-shell-completion zsh)"
@@ -141,8 +142,10 @@ if [[ -d $HOME/.zsh/pure ]]; then
   prompt pure
 fi
 
-# NVM use default
-if (( $+functions[nvm] )); then
+# Node: fnm switches versions on cd from .nvmrc / .node-version
+if (( $+commands[fnm] )); then
+  eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
+elif (( $+functions[nvm] )); then
 autoload -U add-zsh-hook
 load-nvmrc() {
   local node_version="$(nvm version)"
@@ -165,6 +168,8 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 fi
 
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
+
 
 # fzf
 (( $+commands[fzf] )) && eval "$(fzf --zsh)"
@@ -174,8 +179,8 @@ export FZF_DEFAULT_OPTS='--height=70% --preview="cat {}" --preview-window=right:
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='rg --files'
 
-# fd - Find any directory and cd to selected directory
-fd() {
+# fcd - Find any directory and cd to selected directory
+fcd() {
  local dir
  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d \
       -print 2> /dev/null | fzf +m) &&
@@ -198,11 +203,3 @@ compinit
 
 # Added by Antigravity
 [[ -d $HOME/.antigravity/antigravity/bin ]] && export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
-
-
-# Froda settings (work machine only; not linked on Linux):
-[[ -f ~/.zsh/custom/.zsh.froda ]] && source ~/.zsh/custom/.zsh.froda
-(( $+commands[kubesess] )) && eval "$(kubesess init zsh)"
-
-# Added by froda-ai scripts/setup-global-context.sh
-[[ -f $HOME/.froda/internal-froda-dev-ca.pem ]] && export NODE_EXTRA_CA_CERTS="$HOME/.froda/internal-froda-dev-ca.pem"

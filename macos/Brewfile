@@ -1,5 +1,4 @@
 # Install Binaries
-brew 'bash' # Latest Bash version
 brew 'bat' # "cat" on steroids
 brew 'coreutils' # Those that come with macOS are outdated
 brew 'git'
@@ -7,12 +6,16 @@ brew 'gh'
 brew 'grep'
 brew 'pkg-config' # https://github.com/driesvints/dotfiles/issues/20
 brew 'tree'
+brew 'ripgrep' # Fast grep, used by fzf
+brew 'fd' # Fast, friendly find
+brew 'eza' # Modern ls
+brew 'zoxide' # Smarter cd (z / zi)
+brew 'mas' # Mac App Store CLI, needed for the mas entries below
 brew 'awscli'
 brew 'gnu-sed'
-brew 'nvim'
+brew 'neovim'
 brew 'tmux'
 brew 'netcat'
-brew 'asdf'
 brew 'direnv'
 brew 'jq'
 brew 'yq'
@@ -22,18 +25,17 @@ brew 'aws-vault'
 brew 'stern'
 brew 'kubelogin'
 brew 'helmfile'
-brew 'tflint'
 brew 'tfsec'
 brew 'checkov'
 brew 'hadolint'
 brew 'krew'
-brew 'tofu'
+brew 'opentofu'
 # brew 'zsh'
 # brew 'zsh-completions'
 
 # Development
-brew 'nginx'
 brew 'uv' # Python versions, venvs and tools (replaces pyenv)
+brew 'fnm' # Node versions, switches on .nvmrc (replaces nvm)
 brew 'prettier'
 brew 'hashicorp/tap/terraform'
 brew 'terragrunt'
@@ -41,7 +43,6 @@ brew 'terraform-docs'
 brew 'argocd'
 brew 'fzf'
 brew 'go'
-brew 'docker-completion'
 brew 'docker-credential-helper'
 brew 'e1s'
 brew 'eks-node-viewer'
@@ -53,8 +54,6 @@ brew 'kubectl'
 brew 'kustomize'
 brew 'kubectx'
 brew 'kubesess'
-brew 'make'
-brew 'nvm'
 brew 'lazygit'
 
 # Apps
@@ -75,6 +74,7 @@ cask 'google-drive'
 cask 'calibre'
 cask 'zoom'
 cask 'gcloud-cli'
+cask 'firefox'
 cask 'kitty'
 cask 'rancher'
 cask 'session-manager-plugin'
@@ -84,6 +84,6 @@ cask 'codex'
 
 
 # Install Mac App Store apps
-mas 'Keynote', id: 409183694
-mas 'Numbers', id: 409203825
-mas 'Pages', id:409201541
+mas 'Keynote', id: 361285480
+mas 'Numbers', id: 361304891
+mas 'Pages', id: 361309726

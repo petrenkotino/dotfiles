@@ -26,7 +26,6 @@ common/               # shared by both platforms
 macos/                # install.sh, Brewfile, aliases.zsh (→ aliases-os.zsh), .macos, .mackup.cfg
 linux/                # install.sh, packages.sh, versions.sh, aliases.zsh (→ aliases-os.zsh)
 bin/                  # personal scripts → ~/bin
-.zsh.froda, aliases-froda.zsh   # work config, linked on macOS only
 ```
 
 ---
@@ -138,7 +137,9 @@ uv tool install pre-commit         # install a CLI tool onto PATH
 uv python install 3.12 3.13        # install interpreters explicitly
 ```
 
-Migrating from pyenv (macOS): `.zshrc` still runs `pyenv init` **only if pyenv is installed**, so existing projects keep working. Install the versions you use with `uv python install <versions>`, switch projects over to `uv venv` / `uv sync`, then `brew uninstall pyenv` and remove `~/.pyenv` when nothing needs it.
+## Node: fnm on macOS, nvm on Ubuntu
+
+On macOS, [fnm](https://github.com/Schniz/fnm) (`brew 'fnm'`) manages Node and switches version on `cd` from `.nvmrc` / `.node-version`. Install a version with `fnm install --lts` and pick a default with `fnm default <version>`. When fnm is not installed (Ubuntu), `.zshrc` loads `zsh-nvm` and its `.nvmrc` hook instead.
 
 ---
 
@@ -149,9 +150,9 @@ Migrating from pyenv (macOS): `.zshrc` still runs `pyenv init` **only if pyenv i
 | Packages | Homebrew, `macos/Brewfile` | apt + vendor repos, `linux/packages.sh` |
 | Pinned binaries | — | `linux/versions.sh` (uv, k9s, plugin tags) |
 | OS aliases | Finder/`defaults`, `ipconfig`, `stat -f` | `batcat`→`bat`, `xdg-open`→`open`, `hostname -I`, `stat -c` |
-| `bat` / `fd` | `bat` / `fd` | `batcat` (aliased to `bat`) / `fdfind`. `fd` is a dir-picker function in `.zshrc` on both |
+| `bat` / `fd` | `bat` / `fd` | `batcat` (aliased to `bat`) / `fdfind`. `fcd` is a dir-picker function in `.zshrc` on both |
 | GNU coreutils/sed | Homebrew, gnu-sed first on PATH | native |
-| Work (Froda) config, aws-mfa, kubesess, gcloud, Rancher | yes | no |
+| aws-mfa, kubesess, gcloud, Rancher | yes | no |
 | `.macos` defaults, Mackup, Rosetta, casks, App Store apps | yes | no |
 
 ## Dependency classification
@@ -159,9 +160,9 @@ Migrating from pyenv (macOS): `.zshrc` still runs `pyenv init` **only if pyenv i
 | Class | Items |
 |---|---|
 | **Essential** (`base`) | zsh, Oh My Zsh, Pure, zsh-autosuggestions, zsh-nvm, tmux + TPM, neovim, fzf, ripgrep, bat, fd, jq, git, curl, wget, make, build-essential |
-| **Optional** (`dev`) | uv, Node via nvm, Go, direnv, gh, kubectl, Helm, k9s, OpenTofu |
-| **macOS-only** | casks, mas apps, coreutils/gnu-sed/grep/bash from brew, Rosetta, `.macos`, Mackup, Rancher Desktop |
-| **Deferred / work-specific** | awscli, aws-vault, aws-mfa, eksctl, eks-node-viewer, e1s, kubelogin, az, session-manager-plugin, sops, yq, stern, kustomize, kubectx, kubesess, krew, helmfile, argocd, terraform, terragrunt, terraform-docs, tflint, tfsec, checkov, hadolint, pre-commit (`uv tool install`), lazygit, gcloud, docker tooling |
+| **Optional** (`dev`) | uv, Node via nvm (fnm on macOS), Go, direnv, gh, kubectl, Helm, k9s, OpenTofu |
+| **macOS-only** | casks, mas apps, coreutils/gnu-sed/grep from brew, eza, zoxide, Rosetta, `.macos`, Mackup, Rancher Desktop |
+| **Deferred / work-specific** | awscli, aws-vault, aws-mfa, eksctl, eks-node-viewer, e1s, kubelogin, az, session-manager-plugin, sops, yq, stern, kustomize, kubectx, kubesess, krew, helmfile, argocd, terraform, terragrunt, terraform-docs, tfsec, checkov, hadolint, pre-commit (`uv tool install`), lazygit, gcloud, docker tooling |
 
 ## Adding packages
 
@@ -195,7 +196,7 @@ Upgrading pinned versions: edit `linux/versions.sh` and rerun `./install.sh --pr
 
 - The Ubuntu installer is tested on 26.04 amd64 only. The pinned release binaries are amd64-only, so `dev` fails on arm64 (`base` works).
 - Oh My Zsh and zsh-nvm track their default branch (OMZ updates itself), and nvm is installed by zsh-nvm on first shell start. The other plugins are pinned to tags.
-- The `fd()` function in `.zshrc` shadows the `fd` binary on macOS. On Ubuntu use `fdfind`.
+- The `fd` binary is `fdfind` on Ubuntu. The `fcd()` function in `.zshrc` is an fzf dir picker.
 - The macOS installer was refactored (paths and the link helper) but can only be verified on a Mac.
 - Homelab (KVM/libvirt, Docker, Kubernetes, networking) is intentionally out of scope and will live in a separate infrastructure repository.
 
